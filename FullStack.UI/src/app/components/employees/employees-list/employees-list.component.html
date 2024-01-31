@@ -1,0 +1,57 @@
+<div class="container my-5">
+  <div class='row'>
+    <div class='col-4 ps-0'>
+      <button class='btn btn-primary' [routerLink]="['/employees', 'addEdit']"><fa-icon [icon]='faDownload'></fa-icon> Add employee</button>
+    </div>
+    <div class='col-4'>
+      <h4 class='text-center'>Employees</h4>
+    </div>
+    <div class='col-4 pe-0'></div>
+  </div>
+  <table class="table table-bordered" *ngIf="employees && employees.length > 0">
+    <thead>
+      <tr>
+        <th rowspan ="2" class="text-center">Nr.<br>Crt.</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Salary <fa-icon (click)="sortTable('salary')" [icon]="sortDirection === 'asc' ? faSortUp : faSortDown"></fa-icon></th>
+        <th>Department</th>
+        <th>Employer</th>
+        <th rowspan="2" colspan="2"></th>
+      </tr>
+
+      <tr key-nav>
+        
+        <th><input class="form-control" [(ngModel)]='filter.name' (ngModelChange)='filterTable()' (keyup.esc)='clear("name")'
+          placeholder="Find..." name="name"></th>
+        <th><input class="form-control" [(ngModel)]='filter.email' (ngModelChange)='filterTable()'  (keyup.esc)='clear("email")'
+          placeholder="Find..." name="email"></th>
+        <th><input class="form-control" [(ngModel)]='filter.phone' (ngModelChange)='filterTable()' (keyup.esc)='clear("phone")'
+          placeholder="Find..." name="phone"></th>
+        <th><input class="form-control" [(ngModel)]='filter.salary' (ngModelChange)='filterTable()'  (keyup.esc)='clear("salary")'
+          placeholder="Find..." name="salary"></th>
+        <th><input class="form-control" [(ngModel)]='filter.department' (ngModelChange)='filterTable()' (keyup.esc)='clear("department")'
+          placeholder="Find..." name="department"></th>
+        <th><input class="form-control" [(ngModel)]='filter.nameEmployer' (ngModelChange)='filterTable()' (keyup.esc)='clear("nameEmployer")'
+          placeholder="Find..." name="phone"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor ="let employee of filteredEmployees; let i = index " >
+        <td>{{ i + 1 }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.phone }}</td>
+        <td>{{ employee.salary }}</td>
+        <td>{{ employee.department }}</td>
+        <td>{{ employee.employers.nameEmployer }}</td>
+        <td width='35px' class='text-center cursor-pointer' [routerLink]="['/employees', 'addEdit', employee.id]" matTooltip='Edit'
+        matTooltipPosition='left'><fa-icon class='text-primary' [icon]='faEdit'></fa-icon></td>
+      <td width='20px' class='text-center cursor-pointer' (click)='delete(employee)' matTooltip='Delete'
+        matTooltipPosition='left'><fa-icon class='text-danger' [icon]='faTrashAlt'></fa-icon></td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf ="!employees || employees.length <= 0">No Employees Found</p>
+</div>

@@ -1,0 +1,17 @@
+<div class='modal-header'>
+  <h4 class='modal-title' [innerHtml]='title'></h4>
+</div>
+<div class='modal-body py-3'>
+  <div [innerHTML]='content'></div>
+</div>
+<div class='modal-footer d-block'>
+  <div class='row'>
+    <div class='col-6'>
+      <button type='button' *ngIf='showExitButton' id='exit-button' class='btn btn-secondary' (click)='activeModal.dismiss(false)'>{{_exitButtonText}}</button>
+    </div>
+    <div class='col-6 text-end'>
+      <button type='button' id='close-button' class='btn btn-secondary' [ngClass]='{"btn-danger" : showExitButton, "me-2": !(showExitButton && hideConfirmBtn)}' (click)='closeAllModals()'>{{closeButtonText}}</button>
+      <button type='button' *ngIf='!hideConfirmBtn' class='btn btn-success' (click)='activeModal.close()'>{{confirmButtonText}}</button>
+    </div>
+  </div>
+</div>

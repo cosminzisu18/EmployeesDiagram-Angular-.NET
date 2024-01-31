@@ -1,0 +1,38 @@
+<div class="banner-container"></div>
+<div class="container mt-5">
+  <h2>Employee diagram</h2>
+  <div class="row mt-4">
+    <div *ngFor="let employerId of objectKeys(groupedEmployees)" class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-header bg-primary text-white">Department: {{ groupedEmployees[employerId][0]?.employers.departmentEmployer }}</div>
+        <h5 class="card-title text-center"> Employer: {{ groupedEmployees[employerId][0]?.employers.nameEmployer }}</h5>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let employee of groupedEmployees[employerId]" class="list-group-item">
+            <strong>Name:</strong> {{ employee.name }}<br>
+            <strong>Email:</strong> {{ employee.email }}<br>
+            <strong>Phone:</strong> {{ employee.phone }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mx-auto bg-primary mb-3 text-white" style="max-width: 18rem;" *ngIf="isNoteVisible">
+        <div class="card-header text-center">note</div>
+        <div class="card-body">
+          <h5 class="card-title text-center">About my project</h5>
+          <p class="card-text">My project is a web application based on JavaScript, Angular.js, ASP.NET, and Microsoft SQL Server technologies. 
+            It primarily focuses on employee and employer registration, offering basic CRUD (Create, Read, Update, Delete) operations with inter-table relationships. 
+            Throughout the development process, I prioritized functionality over extravagant styling. 
+            In the future, this system can accommodate detailed employee and employer profiles, tracking, observations, applications, and more.</p>
+    
+          <button type="button" class="btn btn-danger" (click)="toggleNoteVisibility()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-3"> 
+      <div class='col-4 ps-0'>
+        <button class='btn btn-primary' (click)='departmentAddEdit()'><fa-icon [icon]='faDownload'></fa-icon> Add</button>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nr.</th>
+            <th scope="col" class="text-center">Department</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let department of departments; let i = index" (dblclick)="departmentAddEdit(department.id)">
+            <th scope="row">{{ i+1 }}</th>
+            <td class="text-center"> {{department.nameDepartment}} </td>
+            <td width='35px' class='text-center cursor-pointer' (click)='departmentAddEdit(department.id)' matTooltip='Edit'
+            matTooltipPosition='left'><fa-icon class='text-primary' [icon]='faEdit'></fa-icon></td>
+          <td width='20px' class='text-center cursor-pointer' (click)='delete(department)' matTooltip='Delete'
+            matTooltipPosition='left'><fa-icon class='text-danger' [icon]='faTrashAlt'></fa-icon></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

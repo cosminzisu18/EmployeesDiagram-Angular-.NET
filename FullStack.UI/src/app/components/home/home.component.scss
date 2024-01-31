@@ -1,0 +1,12 @@
+.card:hover {
+  transform: scale(1.05); 
+  transition: transform 0.3s ease; 
+}
+
+.banner-container {
+  background-image: url('../../../assets/banner.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center -530px;
+  height: 200px; 
+}

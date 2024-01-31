@@ -1,0 +1,58 @@
+<div class="container my-5">
+  <h1 class="mb-3"> {{employeeId? 'Edit' : 'Add'}} employee</h1>
+  <div class="row">
+    <div class="col-6">
+      <form #form="ngForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" [(ngModel)] = "modal.name" name="name" [ngClass]='showError && !modal.name ? "error" : ""' placeholder="Enter name">
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" [(ngModel)] = "modal.email" name="email" [ngClass]='showError && !modal.email ? "error" : ""' placeholder="Enter email">
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="text" class="form-control" id="phone" [(ngModel)] = "modal.phone" name="phone" [ngClass]='showError && !modal.phone ? "error" : ""' placeholder="Enter phone">
+        </div>
+
+        <div class="mb-3">
+          <label for="salary" class="form-label">Salary</label>
+          <input type="text" class="form-control" id="salary" [(ngModel)] = "modal.salary" name="salary"  [ngClass]='showError && !modal.salary ? "error" : ""' placeholder="Enter salary">
+        </div>
+
+        <div class="mb-3">
+          <label for="employer" class="form-label">Department</label>
+          <select class="form-select" id="employer" [(ngModel)]="modal.department" name="department" [disabled]="true">
+            <option *ngFor="let department of departments" [value]="department.nameDepartment">{{ department.nameDepartment }}</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)='save()'>Submit</button>
+        <button type="submit" class="btn btn-danger" (click)='back()'>Back</button>
+      </form>
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">  
+          <div *ngIf="!this.employerNameExist">
+            <h2 class="card-title mb-3 border-bottom" [ngStyle]="{'color': showError && !selectedEmployer ? 'red' : 'initial'}">Employers</h2>
+            <div *ngFor="let employer of employers; let i = index" class="mb-3 border-bottom">
+              <div class="selectable-card" (click)="onEmployerSelect(employer)" [ngClass]="{'selected': employer.selected}">
+                <h4 class="bg-primary text-center"><strong>Name:</strong> {{ employer.nameEmployer }} - {{employer.departmentEmployer}}</h4>
+                <p><strong>Email:</strong> {{ employer.emailEmployer }}</p>
+                <p><strong>Phone:</strong> {{ employer.phoneEmployer }}</p>
+              </div>
+            </div>
+          </div>
+          <h3 *ngIf="this.employerNameExist">{{this.employerNameExist}} selected!</h3>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+ 
+</div>

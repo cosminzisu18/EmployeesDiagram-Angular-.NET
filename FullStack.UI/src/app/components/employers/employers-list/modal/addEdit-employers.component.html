@@ -1,0 +1,38 @@
+<div class='modal-header'>
+  <h4 class='modal-title'>{{id_employer ? 'Edit' : 'Add'}} Employer</h4>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form #form="ngForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" [(ngModel)] = "modal.nameEmployer" name="name"  [ngClass]='showError && !modal.nameEmployer ? "error" : ""' placeholder="Enter name">
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" [(ngModel)] = "modal.emailEmployer" name="email" [ngClass]='showError && !modal.emailEmployer? "error" : ""' placeholder="Enter email">
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="text" class="form-control" id="phone" [(ngModel)] = "modal.phoneEmployer" name="phone" [ngClass]='showError && !modal.phoneEmploye ? "error" : ""' placeholder="Enter phone">
+        </div>
+
+    
+        <div class="mb-3">
+          <label for="employer" class="form-label">Department</label>
+          <select class="form-select" id="employer" [(ngModel)]= "modal.departmentEmployer" name="department">
+            <option *ngFor="let department of departments" [value]= "department.nameDepartment" >{{ department.nameDepartment }}</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class='modal-footer'>
+  <button type="submit" class="btn btn-primary" (click)="save()" >Submit</button>
+  <button type='button' class='btn btn-secondary' (click)='activeModal.dismiss()'>Cancel</button>
+</div>

@@ -1,0 +1,16 @@
+<div class='modal-header'>
+  <h4 class='modal-title'>{{id_department ? 'Edit' : 'Add'}} Department</h4>
+</div>
+
+<div class="container my-5">
+  <div class="row">
+    <form>
+      <label for="name" class="form-label">Department name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)] = "modal.nameDepartment" name="name"  [ngClass]='showError && !modal.nameDepartment ? "error" : ""' placeholder="Enter department name">
+    </form>
+  </div>
+</div>
+<div class='modal-footer'>
+  <button type="submit" class="btn btn-primary" (click)="save()" >Submit</button>
+  <button type='button' class='btn btn-secondary' (click)='activeModal.dismiss()'>Cancel</button>
+</div>
