@@ -8411,19 +8411,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Cosmin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Angular2\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj",
+      "projectUniqueName": "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj",
       "projectName": "FullStack.API",
-      "projectPath": "C:\\Users\\User\\Desktop\\Angular2\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Angular2\\FullStack API\\FullStack.API\\FullStack.API\\obj\\",
+      "projectPath": "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj",
+      "packagesPath": "C:\\Users\\Cosmin\\.nuget\\packages\\",
+      "outputPath": "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Cosmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
