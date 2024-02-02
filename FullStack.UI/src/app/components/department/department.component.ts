@@ -4,6 +4,8 @@ import { faEdit,faDownload,faTrashAlt, faCirclePlus} from '@fortawesome/free-sol
 import { AddEditModalDepartmentComponent } from './modal/addEdit-department.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { saveError } from '../../utilis/utilis';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-department',
@@ -15,7 +17,7 @@ export class DepartmentComponent {
 
 
   departments: any[] = [];
-  constructor (private http: HttpClient, private modal: NgbModal ){  }
+  constructor (private http: HttpClient, private modal: NgbModal, private toast: ToastService ){  }
 
   ngOnInit(): void{
    this.loadData()
@@ -23,7 +25,6 @@ export class DepartmentComponent {
   loadData(): void {
     this.http.get(`http://localhost:5077/api/departments`).subscribe(( res:any ) => {
       this.departments = res;
-      console.log("Departments ", this.departments)
     })
   };
 
@@ -41,7 +42,7 @@ export class DepartmentComponent {
       this.http.delete(`http://localhost:5077/api/departments/${_row.id}`).subscribe(
         () => this.loadData(),
         (error) => {
-          console.error("Error delete department:", error);
+          saveError('Delete Department Error', this.http, this.toast);
         }
       );
     });

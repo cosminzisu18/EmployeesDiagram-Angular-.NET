@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj": {}
+    "E:\\FullStackProject-Zisu\\EmployeesDiagram-Angular-.NET\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj": {}
   },
   "projects": {
-    "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj": {
+    "E:\\FullStackProject-Zisu\\EmployeesDiagram-Angular-.NET\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj",
+        "projectUniqueName": "E:\\FullStackProject-Zisu\\EmployeesDiagram-Angular-.NET\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj",
         "projectName": "FullStack.API",
-        "projectPath": "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj",
+        "projectPath": "E:\\FullStackProject-Zisu\\EmployeesDiagram-Angular-.NET\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj",
         "packagesPath": "C:\\Users\\Cosmin\\.nuget\\packages\\",
-        "outputPath": "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\obj\\",
+        "outputPath": "E:\\FullStackProject-Zisu\\EmployeesDiagram-Angular-.NET\\FullStack API\\FullStack.API\\FullStack.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Cosmin\\AppData\\Roaming\\NuGet\\NuGet.Config",

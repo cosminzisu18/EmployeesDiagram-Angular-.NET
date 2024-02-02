@@ -8,6 +8,8 @@ import { REPLACE_DIACRITICS } from '../../../utilis/replace-diacritics';
 import { cloneDeep } from '../../../utilis/utilis';
 import { FilterService } from '../../../utilis/filter.service';
 import { Router } from '@angular/router'; 
+import { saveError } from '../../../utilis/utilis';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-employers-list',
@@ -19,7 +21,7 @@ export class EmployersListComponent {
   faEdit = faEdit; faDownload= faDownload; faTrashAlt = faTrashAlt; faCirclePlus= faCirclePlus;
   employers: any[] = []; filter = {} as any; filteredEmployers: any = [];
 
-  constructor( private http: HttpClient, private modal: NgbModal, public activeModal: NgbActiveModal, private filterService: FilterService, private router: Router){  }
+  constructor( private http: HttpClient, private modal: NgbModal, public activeModal: NgbActiveModal, private filterService: FilterService, private router: Router, private toast: ToastService){  }
 
   ngOnInit(): void{this.loadData()};
  
@@ -39,12 +41,12 @@ export class EmployersListComponent {
   delete(_row: any){
     const modalRef = this.modal.open(ConfirmDialogComponent, { size: 'lg', keyboard: false, backdrop: 'static' });
     modalRef.componentInstance.title = `Employer Deletion`;
-    modalRef.componentInstance.content = `<p class='text-center mt-1 mb-1'>Do you want to delete employer <b>${_row.name}</b>?`;
+    modalRef.componentInstance.content = `<p class='text-center mt-1 mb-1'>Do you want to delete employer <b>${_row.nameEmployer}</b>?`;
     modalRef.closed.subscribe(() => {
       this.http.delete(`http://localhost:5077/api/employers/${_row.id}`).subscribe(
         () => this.loadData(),
         (error) => {
-          console.error("Error adding employee:", error);
+          saveError('Delete Employer Error', this.http, this.toast);
         }
       );
     });
@@ -80,7 +82,6 @@ export class EmployersListComponent {
 
     this.filterService.setFilter(this.filter, `employer`);
     this.filteredEmployers = arr;
-    console.log("FilteredEmployers ", this.filteredEmployers)
   };
 
   clear = (key: string | number) => {

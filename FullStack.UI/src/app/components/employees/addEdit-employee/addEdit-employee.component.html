@@ -1,33 +1,37 @@
 <div class="container my-5">
   <h1 class="mb-3"> {{employeeId? 'Edit' : 'Add'}} employee</h1>
   <div class="row">
-    <div class="col-6">
-      <form #form="ngForm">
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" [(ngModel)] = "modal.name" name="name" [ngClass]='showError && !modal.name ? "error" : ""' placeholder="Enter name">
+    <div class="col-8">
+      <form #form="ngForm" class="box p-4 rounded shadow col-12"> 
+        <div class="mb-3 d-flex align-items-center">
+          <label for="name" class="form-label me-2 mb-0">Name</label>
+          <div class="flex-grow-1">
+            <input type="text" class="form-control" id="name" [(ngModel)]="modal.name" name="name" [ngClass]='showError && !modal.name ? "error" : ""' placeholder="Enter name">
+          </div>
+          <label for="email" class="form-label me-2 mb-0 ms-4">Email</label> 
+          <div class="flex-grow-1">
+            <input type="email" class="form-control" id="email" [(ngModel)]="modal.email" name="email" [ngClass]='showError && !modal.email ? "error" : ""' placeholder="Enter email">
+          </div>
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+          <label for="phone" class="form-label me-2 mb-0">Phone</label>
+          <div class="flex-grow-1">
+            <input type="text" class="form-control" id="phone" [(ngModel)]="modal.phone" name="phone" [ngClass]='showError && !modal.phone ? "error" : ""'  (keypress)="allowOnlyNumbers($event)" placeholder="Enter phone">
+          </div>
+          <label for="salary" class="form-label me-2 mb-0 ms-4">Salary</label> 
+          <div class="flex-grow-1">
+            <input type="text" class="form-control" id="salary" [(ngModel)]="modal.salary" name="salary" [ngClass]='showError && !modal.salary ? "error" : ""' (keypress)="allowOnlyNumbers($event)" placeholder="Enter salary">
+          </div>
         </div>
 
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" [(ngModel)] = "modal.email" name="email" [ngClass]='showError && !modal.email ? "error" : ""' placeholder="Enter email">
-        </div>
-
-        <div class="mb-3">
-          <label for="phone" class="form-label">Phone</label>
-          <input type="text" class="form-control" id="phone" [(ngModel)] = "modal.phone" name="phone" [ngClass]='showError && !modal.phone ? "error" : ""' placeholder="Enter phone">
-        </div>
-
-        <div class="mb-3">
-          <label for="salary" class="form-label">Salary</label>
-          <input type="text" class="form-control" id="salary" [(ngModel)] = "modal.salary" name="salary"  [ngClass]='showError && !modal.salary ? "error" : ""' placeholder="Enter salary">
-        </div>
-
-        <div class="mb-3">
-          <label for="employer" class="form-label">Department</label>
-          <select class="form-select" id="employer" [(ngModel)]="modal.department" name="department" [disabled]="true">
-            <option *ngFor="let department of departments" [value]="department.nameDepartment">{{ department.nameDepartment }}</option>
-          </select>
+        <div class="mb-3 d-flex align-items-center" *ngIf="!this.employerNameExist">
+          <label for="employer" class="form-label me-2 mb-0">Department</label>
+          <div class="flex-grow-1">
+            <select class="form-select" id="employer" [(ngModel)]="modal.department" name="department" [disabled]="true" style="max-width: 150px;">
+              <option *ngFor="let department of departments" [value]="department.nameDepartment">{{ department.nameDepartment }}</option>
+            </select>
+          </div>
         </div>
 
         <button type="submit" class="btn btn-primary" (click)='save()'>Submit</button>
@@ -35,7 +39,7 @@
       </form>
     </div>
 
-    <div class="col-6">
+    <div class="col-4">
       <div class="card">
         <div class="card-body">  
           <div *ngIf="!this.employerNameExist">
@@ -48,11 +52,10 @@
               </div>
             </div>
           </div>
-          <h3 *ngIf="this.employerNameExist">{{this.employerNameExist}} selected!</h3>
+          <h3 *ngIf="this.employerNameExist"><strong>{{this.employerNameExist}}</strong> selected with department <strong>{{this.employerDepartment}}</strong>!</h3>
         </div>
       </div>
     </div>
     
   </div>
- 
 </div>

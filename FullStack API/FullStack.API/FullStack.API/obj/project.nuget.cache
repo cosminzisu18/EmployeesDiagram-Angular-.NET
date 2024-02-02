@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hI/RKSkOYB6Knk4HwMCLTIyamizpde7kX1BAytwe3ivtzbdilGvuNVoxNQWe8IeddS76aeE7blgmX2o/quyQJA==",
+  "dgSpecHash": "oAoGkSaNkWvUOfsagexE3V2GqMRlQ0x56CjEV/cNhWSPgdGBLSOn9z9aoIoamw3yiwHIz2a+6fGnIyEOyxdScw==",
   "success": true,
-  "projectFilePath": "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj",
+  "projectFilePath": "E:\\FullStackProject-Zisu\\EmployeesDiagram-Angular-.NET\\FullStack API\\FullStack.API\\FullStack.API\\FullStack.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Cosmin\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Cosmin\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

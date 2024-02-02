@@ -13,6 +13,7 @@ namespace FullStack.API.Data
         public DbSet<Employees> Employees { get; set; } 
         public DbSet<Employers> Employers { get; set; }
         public DbSet<Departments> Departments { get; set; }
+        public DbSet<LogError> LogError { get; set; }
 
     }
 }

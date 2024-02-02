@@ -4,6 +4,7 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { ToastService } from '../../../../services/toast.service';
 import { isValidEmail } from '../../../../utilis/utilis-validation';
 import { isValidPhoneNumber } from '../../../../utilis/utilis-validation';
+import { saveError } from '../../../../utilis/utilis';
 
 @Component({
   selector: 'addEdit-employers-list',
@@ -33,15 +34,19 @@ export class AddEditModalEmployerComponent {
   save(){
     if(this.handleValidation()){
       if(!this.id_employer){
-        this.http.post(`http://localhost:5077/api/employers`, this.modal).subscribe(
-          () => this.activeModal.close(),
-          (error) => console.error("Error adding employee:", error)
+        this.http.post(`http://localhost:5077/api/employers`, this.modal).subscribe(() => {
+          this.activeModal.close();
+          this.toast.success('Add Employer Success');
+        },
+        (error) => saveError('Post Employer Error', this.http, this.toast)
         );
       }else{
-        this.http.put(`http://localhost:5077/api/employers/${this.id_employer}`, this.modal).subscribe(
-          () => this.activeModal.close(),
+        this.http.put(`http://localhost:5077/api/employers/${this.id_employer}`, this.modal).subscribe(() => {
+          this.activeModal.close(),
+          this.toast.success('Modify Employer Success');
+        },
           (error) => {
-            console.error("Error edit employee:", error);
+            saveError('Put Employer Error', this.http, this.toast)
           }
         );
       }
@@ -72,6 +77,14 @@ export class AddEditModalEmployerComponent {
     }
 
     return true;
+  };
+
+  allowOnlyNumbers = (event: any): void => {
+    const inputChar = String.fromCharCode(event.charCode);
+
+    if (!/^\d+$/.test(inputChar)) {
+      event.preventDefault();
+    }
   };
 
 }

@@ -92,6 +92,25 @@ namespace FullStack.API.Migrations
                     b.ToTable("Employers");
                 });
 
+            modelBuilder.Entity("FullStack.API.Models.LogError", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ErrorMessage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LogError");
+                });
+
             modelBuilder.Entity("FullStack.API.Models.Employees", b =>
                 {
                     b.HasOne("FullStack.API.Models.Employers", "Employers")

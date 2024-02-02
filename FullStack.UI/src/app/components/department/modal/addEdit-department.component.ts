@@ -2,6 +2,7 @@ import { Component, Input} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { ToastService } from '../../../services/toast.service';
+import { saveError } from '../../../utilis/utilis';
 
 @Component({
   selector: 'addEdit-department',
@@ -26,20 +27,24 @@ export class AddEditModalDepartmentComponent {
   save(){
 
     if(this.handleValidation()){
-    if(!this.id_department){
-      this.http.post(`http://localhost:5077/api/departments`, this.modal).subscribe(
-        () => this.activeModal.close(),
-        (error) => console.error("Error adding department:", error)
-      );
-    }else{
-      this.http.put(`http://localhost:5077/api/departments/${this.id_department}`, this.modal).subscribe(
-        () => this.activeModal.close(),
-        (error) => {
-          console.error("Error edit department:", error);
-        }
-      );
+      if(!this.id_department){
+        this.http.post(`http://localhost:5077/api/departments`, this.modal).subscribe(() => {
+          this.activeModal.close();
+          this.toast.success('Add Department Success');
+      },
+          (error) => saveError('Post Department Error', this.http, this.toast)
+        );
+      }else{
+        this.http.put(`http://localhost:5077/api/departments/${this.id_department}`, this.modal).subscribe(() => {
+          this.activeModal.close();
+          this.toast.success('Modify Department Success');
+        },
+          (error) => {
+            saveError('Put Department Error', this.http, this.toast);
+          }
+        );
+      }
     }
-  }
   };
 
   handleValidation =(): boolean => {

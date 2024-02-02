@@ -19,6 +19,9 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+
+
 
 
 @NgModule({
@@ -44,6 +47,7 @@ import { HeaderComponent } from './components/header/header.component';
     NgbModalModule,
     ToastModule,
     BrowserAnimationsModule,
+    NgSelectModule,
   ],
   providers: [
     NgbActiveModal,

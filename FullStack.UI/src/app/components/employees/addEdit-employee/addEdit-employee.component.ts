@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastService } from '../../../services/toast.service';
 import { isValidEmail } from '../../../utilis/utilis-validation';
 import { isValidPhoneNumber } from '../../../utilis/utilis-validation';
+import { saveError } from '../../../utilis/utilis';
+import { FetchService } from '../../../services/fetch.service';
 
 
 @Component({
@@ -16,13 +18,8 @@ import { isValidPhoneNumber } from '../../../utilis/utilis-validation';
 export class AddEditEmployeeComponent implements OnInit {
   
   
-  modal = {} as any;
-  employers: any[] = [];
-  employeeId?: string;
-  employerNameExist?: string; employerId?: string; employerDepartment?: string;
-  selectedEmployer: any | null = null;
-  departments: any[] = [];
-  showError = false;
+  modal = {} as any;employers: any[] = []; employeeId?: string; employerNameExist?: string; employerId?: string; employerDepartment?: string;
+  selectedEmployer: any | null = null; departments: any[] = []; showError = false;
 
   constructor( private router: Router, private http: HttpClient, private fb: FormBuilder, private route: ActivatedRoute, private toast: ToastService ){}
 
@@ -62,25 +59,29 @@ export class AddEditEmployeeComponent implements OnInit {
       }
 
       if(!this.employeeId){
-        this.http.post('http://localhost:5077/api/employees', this.modal).subscribe(
-          () => this.router.navigate(['employees']),
-            (error) => {
-              console.error("Error adding employee:", error);
-            }
+        this.http.post('http://localhost:5077/api/employees', this.modal).subscribe(() => {
+          this.router.navigate(['employees']);
+          this.toast.success('Add Employee Success');
+        },
+          (error) => {
+            saveError('Post Employees Error', this.http, this.toast);
+          }
         );
       }else{
-        this.http.put(`http://localhost:5077/api/employees/${this.employeeId}`, this.modal).subscribe(
-          () => this.router.navigate(['employees']),
+        this.http.put(`http://localhost:5077/api/employees/${this.employeeId}`, this.modal).subscribe(() => {
+          this.router.navigate(['employees']);
+          this.toast.success('Modify Employee Success');
+        },
           (error) => {
-            console.error("Error adding employee:", error);
+            saveError('Put Employees Error', this.http, this.toast);
           }
         );
       }
     }
   };
 
-  getEmployee(){
-    this.http.get(`http://localhost:5077/api/employees/${this.employeeId}`).subscribe(( res:any ) => {
+  getEmployee() {
+    this.http.get(`http://localhost:5077/api/employees/${this.employeeId}`).subscribe((res: any) => {
       this.modal = res;
     })
   };
@@ -88,7 +89,6 @@ export class AddEditEmployeeComponent implements OnInit {
   getEmployers(){
     this.http.get(`http://localhost:5077/api/employers`).subscribe(( res:any ) => {
       this.employers = res;
-      console.log("employers ", this.employers)
     })
   };
 
@@ -133,5 +133,13 @@ export class AddEditEmployeeComponent implements OnInit {
         }
       }
         return true;
-  }
+  };
+
+  allowOnlyNumbers = (event: any): void => {
+    const inputChar = String.fromCharCode(event.charCode);
+
+    if (!/^\d+$/.test(inputChar)) {
+      event.preventDefault();
+    }
+  };
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DyjXQr/LSKB/7Qy9McltmyOOKIb5CRM9fcGpNjQ22y4=",
+  "Hash": "t/TMR0y93oqPt+oNL5ZEUxJlwS8ZG59hZoIfDr7mvcc=",
   "Source": "FullStack.API",
   "BasePath": "_content/FullStack.API",
   "Mode": "Default",
@@ -47,10 +47,10 @@
       "OriginalItemSpec": "C:\\Users\\Cosmin\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.1\\staticwebassets\\QuickGrid.razor.js"
     },
     {
-      "Identity": "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FullStack.API.styles.css",
+      "Identity": "E:\\FullStackProject-Zisu\\EmployeesDiagram-Angular-.NET\\FullStack API\\FullStack.API\\FullStack.API\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FullStack.API.styles.css",
       "SourceId": "FullStack.API",
       "SourceType": "Computed",
-      "ContentRoot": "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "E:\\FullStackProject-Zisu\\EmployeesDiagram-Angular-.NET\\FullStack API\\FullStack.API\\FullStack.API\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/FullStack.API",
       "RelativePath": "FullStack.API.styles.css",
       "AssetKind": "All",
@@ -63,7 +63,7 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "E:\\FullStackProject-Zisu\\FullStack API\\FullStack.API\\FullStack.API\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FullStack.API.styles.css"
+      "OriginalItemSpec": "E:\\FullStackProject-Zisu\\EmployeesDiagram-Angular-.NET\\FullStack API\\FullStack.API\\FullStack.API\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FullStack.API.styles.css"
     }
   ]
 }

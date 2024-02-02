@@ -18,10 +18,9 @@
 
         <div class="mb-3">
           <label for="phone" class="form-label">Phone</label>
-          <input type="text" class="form-control" id="phone" [(ngModel)] = "modal.phoneEmployer" name="phone" [ngClass]='showError && !modal.phoneEmploye ? "error" : ""' placeholder="Enter phone">
+          <input type="text" class="form-control" id="phone" [(ngModel)] = "modal.phoneEmployer" name="phone" [ngClass]='showError && !modal.phoneEmploye ? "error" : ""' (keypress)="allowOnlyNumbers($event)" placeholder="Enter phone">
         </div>
 
-    
         <div class="mb-3">
           <label for="employer" class="form-label">Department</label>
           <select class="form-select" id="employer" [(ngModel)]= "modal.departmentEmployer" name="department">
