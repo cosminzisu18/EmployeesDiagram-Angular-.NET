@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace FullStack.API.Models
 {
@@ -14,6 +15,8 @@ namespace FullStack.API.Models
 
         [ForeignKey("EmployersId")]
         public Employers Employers { get; set; }
+        [JsonIgnore]
+        public ICollection<Observations> Observations { get; set; }
 
     }
 }

@@ -20,6 +20,7 @@ import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ShowInformationComponent } from './components/show-information/show-information.component';
 
 
 
@@ -35,7 +36,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     HomeComponent,
     DepartmentComponent,
     AddEditModalDepartmentComponent,
-    HeaderComponent, 
+    HeaderComponent,
+    ShowInformationComponent, 
   ],
   imports: [
     BrowserModule,

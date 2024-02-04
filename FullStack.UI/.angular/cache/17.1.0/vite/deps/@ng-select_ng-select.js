@@ -1,6 +1,6 @@
 import {
   NG_VALUE_ACCESSOR
-} from "./chunk-EQF7X5K3.js";
+} from "./chunk-PIDWKPGN.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -8,7 +8,7 @@ import {
   NgForOf,
   NgIf,
   NgTemplateOutlet
-} from "./chunk-32Y5CX77.js";
+} from "./chunk-HTNR27SU.js";
 import {
   Attribute,
   ChangeDetectionStrategy,
@@ -30,23 +30,11 @@ import {
   Optional,
   Output,
   Renderer2,
-  Subject,
   TemplateRef,
   ViewChild,
   ViewEncapsulation$1,
-  animationFrameScheduler,
-  asapScheduler,
-  auditTime,
-  debounceTime,
-  filter,
   forwardRef,
-  fromEvent,
-  map,
-  merge,
   setClassMetadata,
-  startWith,
-  takeUntil,
-  tap,
   ɵɵNgOnChangesFeature,
   ɵɵProvidersFeature,
   ɵɵadvance,
@@ -88,12 +76,26 @@ import {
   ɵɵtextInterpolate,
   ɵɵtextInterpolate1,
   ɵɵviewQuery
-} from "./chunk-4XZIK5XP.js";
+} from "./chunk-6T7U2S67.js";
+import {
+  Subject,
+  animationFrameScheduler,
+  asapScheduler,
+  auditTime,
+  debounceTime,
+  filter,
+  fromEvent,
+  map,
+  merge,
+  startWith,
+  takeUntil,
+  tap
+} from "./chunk-SED5GEAQ.js";
 import {
   __spreadValues
 } from "./chunk-J4B6MK7R.js";
 
-// node_modules/@ng-select/ng-select/fesm2022/ng-select-ng-select.mjs
+// ../node_modules/@ng-select/ng-select/fesm2022/ng-select-ng-select.mjs
 var _c0 = ["content"];
 var _c1 = ["scroll"];
 var _c2 = ["padding"];

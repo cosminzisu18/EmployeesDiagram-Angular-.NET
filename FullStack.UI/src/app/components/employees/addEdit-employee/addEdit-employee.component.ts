@@ -18,7 +18,7 @@ import { FetchService } from '../../../services/fetch.service';
 export class AddEditEmployeeComponent implements OnInit {
   
   
-  modal = {} as any;employers: any[] = []; employeeId?: string; employerNameExist?: string; employerId?: string; employerDepartment?: string;
+  modal = {} as any; employers: any[] = []; employeeId?: string; employerNameExist?: string; employerId?: string; employerDepartment?: string;
   selectedEmployer: any | null = null; departments: any[] = []; showError = false;
 
   constructor( private router: Router, private http: HttpClient, private fb: FormBuilder, private route: ActivatedRoute, private toast: ToastService ){}
@@ -41,10 +41,9 @@ export class AddEditEmployeeComponent implements OnInit {
     }  
     
     this.getEmployers(); 
+    this.getDepartments();
 
-    this.http.get(`http://localhost:5077/api/departments`).subscribe(( res:any ) => {
-      this.departments= res;
-    })
+  
   };
 
   save() {
@@ -89,6 +88,12 @@ export class AddEditEmployeeComponent implements OnInit {
   getEmployers(){
     this.http.get(`http://localhost:5077/api/employers`).subscribe(( res:any ) => {
       this.employers = res;
+    })
+  };
+
+  getDepartments(){
+    this.http.get(`http://localhost:5077/api/departments`).subscribe(( res:any ) => {
+      this.departments= res;
     })
   };
 

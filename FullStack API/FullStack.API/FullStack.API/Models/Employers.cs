@@ -13,5 +13,8 @@ namespace FullStack.API.Models
         [JsonIgnore]
         public ICollection<Employees> Employees { get; set; }
 
+        [JsonIgnore]
+        public ICollection<Observations> Observations { get; set; }
+
     }
 }

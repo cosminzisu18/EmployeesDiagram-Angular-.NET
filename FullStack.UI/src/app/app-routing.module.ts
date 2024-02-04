@@ -5,6 +5,7 @@ import { EmployersListComponent } from './components/employers/employers-list/em
 import { AddEditEmployeeComponent } from './components/employees/addEdit-employee/addEdit-employee.component';
 import { HomeComponent } from './components/home/home.component';
 import { DepartmentComponent } from './components/department/department.component';
+import { ShowInformationComponent } from './components/show-information/show-information.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'employers', component: EmployersListComponent },
 
   { path: 'department', component: DepartmentComponent },
+
+  { path: 'information', component: ShowInformationComponent },
 ];
 
 @NgModule({

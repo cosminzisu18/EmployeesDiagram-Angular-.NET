@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { faEdit,faDownload,faTrashAlt, faCirclePlus, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faEdit,faDownload,faTrashAlt, faCirclePlus, faSortUp, faSortDown , faInfo} from '@fortawesome/free-solid-svg-icons';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { REPLACE_DIACRITICS } from '../../../utilis/replace-diacritics';
@@ -14,7 +14,7 @@ import { FilterService } from '../../../utilis/filter.service';
   styleUrl: './employees-list.component.scss'
 })
 export class EmployeesListComponent {
-  faEdit = faEdit; faDownload= faDownload; faTrashAlt = faTrashAlt; faCirclePlus= faCirclePlus; faSortUp = faSortUp; faSortDown = faSortDown;
+  faEdit = faEdit; faDownload= faDownload; faTrashAlt = faTrashAlt; faCirclePlus= faCirclePlus; faSortUp = faSortUp; faSortDown = faSortDown; faInfo = faInfo;
   filter = {} as any; filteredEmployees: any = [];
   employees: any[] = []; sortDirection: 'asc' | 'desc' = 'asc';
   constructor (private http: HttpClient, private router: Router, private modal: NgbModal, private filterService: FilterService ){  }
@@ -28,6 +28,7 @@ export class EmployeesListComponent {
     this.http.get(`http://localhost:5077/api/employees`).subscribe(( res:any ) => {
       this.employees= res;
       this.filteredEmployees = this.employees;
+      console.log("employees ", this.employees)
     })
   };
 
@@ -79,12 +80,15 @@ export class EmployeesListComponent {
 
     this.filterService.setFilter(this.filter, `employee`);
     this.filteredEmployees = arr;
-    console.log("filteredEmployees ", this.filteredEmployees)
   };
 
   clear = (key: string | number) => {
     this.filter[key] = undefined;
     this.filterTable();
+  };
+
+  showInformation(employee: any) {
+    this.router.navigate(['information'], { queryParams: { employeeId: employee.id } });
   };
 
   sortTable(column: string): void {

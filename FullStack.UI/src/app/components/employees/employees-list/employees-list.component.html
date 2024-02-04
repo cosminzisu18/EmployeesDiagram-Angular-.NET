@@ -18,7 +18,7 @@
         <th>Salary <fa-icon (click)="sortTable('salary')" [icon]="sortDirection === 'asc' ? faSortUp : faSortDown"></fa-icon></th>
         <th>Department</th>
         <th>Employer</th>
-        <th rowspan="2" colspan="2"></th>
+        <th rowspan="3" colspan="3"></th>
       </tr>
 
       <tr key-nav>
@@ -47,9 +47,11 @@
         <td>{{ employee.department }}</td>
         <td>{{ employee.employers.nameEmployer }}</td>
         <td width='35px' class='text-center cursor-pointer' [routerLink]="['/employees', 'addEdit', employee.id]" matTooltip='Edit'
-        matTooltipPosition='left'><fa-icon class='text-primary' [icon]='faEdit'></fa-icon></td>
-      <td width='20px' class='text-center cursor-pointer' (click)='delete(employee)' matTooltip='Delete'
-        matTooltipPosition='left'><fa-icon class='text-danger' [icon]='faTrashAlt'></fa-icon></td>
+          matTooltipPosition='left'><fa-icon class='text-primary' [icon]='faEdit'></fa-icon></td>
+        <td width='20px' class='text-center cursor-pointer' (click)='delete(employee)' matTooltip='Delete'
+          matTooltipPosition='left'><fa-icon class='text-danger' [icon]='faTrashAlt'></fa-icon></td>
+        <td width='20px' class='text-center cursor-pointer' (click)='showInformation(employee)' matTooltip='Info'
+          matTooltipPosition='left'><fa-icon class='text-info' [icon]='faInfo'></fa-icon></td>
       </tr>
     </tbody>
   </table>

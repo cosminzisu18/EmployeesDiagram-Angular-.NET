@@ -1,13 +1,9 @@
-using FullStack.API.Data;
+﻿using FullStack.API.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
+
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-
-
 
 
 builder.Services.AddControllers();

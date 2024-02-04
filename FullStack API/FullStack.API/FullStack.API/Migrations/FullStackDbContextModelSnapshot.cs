@@ -111,6 +111,38 @@ namespace FullStack.API.Migrations
                     b.ToTable("LogError");
                 });
 
+            modelBuilder.Entity("FullStack.API.Models.Observations", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("EmployeesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EmployersId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Note")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Observation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeesId");
+
+                    b.HasIndex("EmployersId");
+
+                    b.ToTable("Observations");
+                });
+
             modelBuilder.Entity("FullStack.API.Models.Employees", b =>
                 {
                     b.HasOne("FullStack.API.Models.Employers", "Employers")
@@ -122,9 +154,35 @@ namespace FullStack.API.Migrations
                     b.Navigation("Employers");
                 });
 
+            modelBuilder.Entity("FullStack.API.Models.Observations", b =>
+                {
+                    b.HasOne("FullStack.API.Models.Employees", "Employees")
+                        .WithMany("Observations")
+                        .HasForeignKey("EmployeesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FullStack.API.Models.Employers", "Employers")
+                        .WithMany("Observations")
+                        .HasForeignKey("EmployersId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Employees");
+
+                    b.Navigation("Employers");
+                });
+
+            modelBuilder.Entity("FullStack.API.Models.Employees", b =>
+                {
+                    b.Navigation("Observations");
+                });
+
             modelBuilder.Entity("FullStack.API.Models.Employers", b =>
                 {
                     b.Navigation("Employees");
+
+                    b.Navigation("Observations");
                 });
 #pragma warning restore 612, 618
         }
